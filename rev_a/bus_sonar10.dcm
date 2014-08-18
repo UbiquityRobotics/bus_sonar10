@@ -52,6 +52,10 @@ $CMP SCHOTTKY_DIODE_VERT
 D Schottky Diode
 $ENDCMP
 #
+$CMP SONAR_40_CONNECTOR
+D 40-pin Sonar Connector
+$ENDCMP
+#
 $CMP TERMINATE_JUMPER
 D Bus Termination Jumper
 $ENDCMP

@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/wayne/public_html/projects/bus_sonar10/rev_a/bus_sonar10.sch)
-    (date "Sun 17 Aug 2014 05:09:33 PM PDT")
+    (date "Mon 18 Aug 2014 02:41:23 PM PDT")
     (tool "Eeschema (2014-jan-25)-product"))
   (components
     (comp (ref H1)
@@ -80,7 +80,7 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 53EA4CB4))
     (comp (ref X1)
-      (value CRYSTAL)
+      (value 16MHz)
       (libsource (lib bus_sonar10) (part CRYSTAL))
       (sheetpath (names /) (tstamps /))
       (tstamp 53EA6D8D))
@@ -437,12 +437,12 @@
         (pin (num 2) (name ~) (type power_in))
         (pin (num 3) (name VOUT) (type power_out)))))
   (libraries
-    (library (logical 74xx)
-      (uri /usr/local/share/kicad/library/74xx.lib))
+    (library (logical bus_sonar10-cache)
+      (uri /home/wayne/public_html/projects/bus_sonar10/rev_a/bus_sonar10-cache.lib))
     (library (logical bus_sonar10)
       (uri bus_sonar10.lib))
-    (library (logical bus_sonar10-cache)
-      (uri /home/wayne/public_html/projects/bus_sonar10/rev_a/bus_sonar10-cache.lib)))
+    (library (logical 74xx)
+      (uri /usr/local/share/kicad/library/74xx.lib)))
   (nets
     (net (code 1) (name "Net-(N4-Pad35)")
       (node (ref N4) (pin 35))

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-jan-25)-product   date = Sun 17 Aug 2014 05:11:25 PM PDT
+Cmp-Mod V01 Created by Cvpcb (2014-jan-25)-product   date = Mon 18 Aug 2014 02:41:49 PM PDT
 
 BeginCmp
 TimeStamp = /53EA7619;
@@ -248,7 +248,7 @@ EndCmp
 BeginCmp
 TimeStamp = /53EA6D8D;
 Reference = X1;
-ValeurCmp = CRYSTAL;
+ValeurCmp = 16MHz;
 IdModule  = Bus_Sonar10_Rev_A:Crystal_HC49-U_Vertical;
 EndCmp
 

@@ -79,9 +79,9 @@ All the connections are summerized in the table below:
 <BlockQuote>
   <Table Border="1">
     <TR>
-      <TH ColSpan="2">Sonar</TH>
-      <TH RowSpan="2">Trigger</TH>
-      <TH RowSpan="3">Echo</TH>
+      <TH RowSpan="2">Sonar</TH>
+      <TH ColSpan="2">Trigger</TH>
+      <TH ColSpan="3">Echo</TH>
     </TR><TR>
       <TH>Pin</TH>
       <TH>Arduino</TH>
@@ -92,9 +92,9 @@ All the connections are summerized in the table below:
       <TD>0</TD>
       <TD>24</TD>
       <TD>A1</TD>
-      <TD ColSpan="2">15</TD>
-      <TD ColSpan="2">D9</TD>
-      <TD ColSpan="2>>OC1A</TD>
+      <TD RowSpan="2">15</TD>
+      <TD RowSpan="2">D9</TD>
+      <TD RowSpan="2">OC1A</TD>
     </TR><TR>
       <TD>1</TD>
       <TD>19</TD>
@@ -110,9 +110,9 @@ All the connections are summerized in the table below:
       <TD>3</TD>
       <TD>18</TD>
       <TD>D12</TD>
-      <TD ColSpan="2">11</TD>
-      <TD ColSpan="2">D5</TD>
-      <TD ColSpan="2>>OC0B</TD>
+      <TD RowSpan="2">11</TD>
+      <TD RowSpan="2">D5</TD>
+      <TD RowSpan="2">OC0B</TD>
     </TR><TR>
       <TD>4</TD>
       <TD>14</TD>
@@ -121,9 +121,9 @@ All the connections are summerized in the table below:
       <TD>5</TD>
       <TD>26</TD>
       <TD>A3</TD>
-      <TD ColSpan="2">17</TD>
-      <TD ColSpan="2">D11</TD>
-      <TD ColSpan="2">OC2A</TD>
+      <TD RowSpan="2">17</TD>
+      <TD RowSpan="2">D11</TD>
+      <TD RowSpan="2">OC2A</TD>
     </TR><TR>
       <TD>6</TD>
       <TD>25</TD>
@@ -139,9 +139,9 @@ All the connections are summerized in the table below:
       <TD>8</TD>
       <TD>6</TD>
       <TD>D4</TD>
-      <TD ColSpan="2">5</TD>
-      <TD ColSpan="2">D3</TD>
-      <TD ColSpan="2">OC2B</TD>
+      <TD RowSpan="2">5</TD>
+      <TD RowSpan="2">D3</TD>
+      <TD RowSpan="2">OC2B</TD>
     </TR><TR>
       <TD>9</TD>
       <TD>4</TD>

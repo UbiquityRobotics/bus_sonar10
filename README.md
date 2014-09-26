@@ -10,8 +10,6 @@ Currently, everything is located in the `rev_a` directory.
 The revision A schematic is available as either
 `bus_sonar10.pdf` or as `bus_sonar10.svg`.
 
-### Logic Side
-
 Logic ground comes in on N1 (pins 3 and 4).  Logic
 power comes in on N1 (pins 1 and 2.)  The logic power
 is routed to C1, U2 (a LM2940-5.0), C4, C5, and R1.
@@ -179,7 +177,7 @@ To build the code:
 
         make
 
-To upload the code:
+To upload the code to bus_sonar10 over the FTDI serial cable:
 
         make upload
 

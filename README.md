@@ -79,10 +79,10 @@ All the connections are summerized in the table below:
 <BlockQuote>
   <Table Border="1">
     <TR>
-      <TH Span="2">Trigger</TH>
-      <TH Span="3">Echo</TH>
+      <TH ColSpan="2">Sonar</TH>
+      <TH RowSpan="2">Trigger</TH>
+      <TH RowSpan="3">Echo</TH>
     </TR><TR>
-      <TH>Sonar</TH>
       <TH>Pin</TH>
       <TH>Arduino</TH>
       <TH>Pin</TH>

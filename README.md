@@ -59,8 +59,8 @@ its #RESET line (U4 pin 1).  Now R7 has 5V across it
 and it starts to charge C10 up to 5V.  When downloading
 is done, The serial cable signal RTS goes back high again.
 This the causes the U1B AND output to go high (5V).
-This causes the other end of C10 to attempt to pull the
-#RESET line up to 10V (since C10 has 5V across it.)
+This causes the other end of C10 to attempt to pull
+the #RESET line up to 10V (since C10 has 5V across it.)
 Luckily the Schottky diode D1 to clamp the voltage
 on the #RESET line to 5.2V and rapidly discharge C10
 again.  Laslty, the button SW1 can be used to trigger

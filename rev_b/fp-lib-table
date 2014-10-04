@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name bus_sonar10)(type KiCad)(uri $KIPRJMOD/bus_sonar10.pretty)(options "")(descr ""))
+)

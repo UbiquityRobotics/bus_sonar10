@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Fri 03 Oct 2014 10:04:34 PM PDT
+Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Fri 03 Oct 2014 11:09:21 PM PDT
 
 BeginCmp
 TimeStamp = /53EA7619;
@@ -82,6 +82,13 @@ TimeStamp = /53E96A4D;
 Reference = D1;
 ValeurCmp = SD101C-TR;
 IdModule  = bus_sonar10:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /542FE734;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = bus_sonar10:T1_LED;
 EndCmp
 
 BeginCmp
@@ -200,6 +207,20 @@ BeginCmp
 TimeStamp = /53E99988;
 Reference = R7;
 ValeurCmp = 10K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /542FA869;
+Reference = R8;
+ValeurCmp = 100K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /542FE392;
+Reference = R9;
+ValeurCmp = 470;
 IdModule  = bus_sonar10:Resistor_Horizontal_400;
 EndCmp
 

@@ -151,18 +151,19 @@ All the connections are summerized in the table below:
 ### Issues
 
 * The TXD and RXD pins on the MCP2562 (U3 pins 1 and 4) are
-  swapped.
+  swapped. [x]
 
-* It would be nice to have an LED that can be blinked.
+* It would be nice to have an LED that can be blinked. [x]
 
-* Tie unused inputs of U1 to one rail or the other.
+* Tie unused inputs of U1 to one rail or the other. [x]
 
-* Put a 100K pull up on MCP2562 (U3) TXD (pin 1).
+* Put a 100K pull up on U1A (pin 1) to deal with MCP2652 not
+  being plugged in.. [x]
 
-* Think about finding an extra pin for STBY on the MXP2652
-  rather than just grounding it.
+* Think about finding an extra pin for STBY on the MCP2652
+  rather than just grounding it. [x]
 
-* Think about adding a firmware update lockout pin.
+* References for D1 and R7 are transposed. [x]
 
 ## Software
 

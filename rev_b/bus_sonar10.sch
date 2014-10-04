@@ -37,8 +37,8 @@ $Descr A 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "Sonar 10"
-Date "17 Aug 2014"
-Rev "A"
+Date "Fri 03 Oct 2014"
+Rev "B"
 Comp ""
 Comment1 ""
 Comment2 ""

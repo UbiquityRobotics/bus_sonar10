@@ -1,0 +1,276 @@
+Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Fri 03 Oct 2014 11:09:21 PM PDT
+
+BeginCmp
+TimeStamp = /53EA7619;
+Reference = C1;
+ValeurCmp = 18pF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA3E9D;
+Reference = C2;
+ValeurCmp = 22uF;
+IdModule  = bus_sonar10:Capacitor4x3RM2-5_RevB;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA7713;
+Reference = C3;
+ValeurCmp = 18pF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA479D;
+Reference = C4;
+ValeurCmp = .1uF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA4CB4;
+Reference = C5;
+ValeurCmp = 22uF;
+IdModule  = bus_sonar10:Capacitor4x3RM2-5_RevB;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA3930;
+Reference = C6;
+ValeurCmp = .1uF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA3BB3;
+Reference = C7;
+ValeurCmp = .1uF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA3C1E;
+Reference = C8;
+ValeurCmp = .1uF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA3C8A;
+Reference = C9;
+ValeurCmp = .1uF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E996AB;
+Reference = C10;
+ValeurCmp = 1uF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53F15832;
+Reference = C11;
+ValeurCmp = .1uF;
+IdModule  = bus_sonar10:Capacitor3MMDiscRM2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E96A4D;
+Reference = D1;
+ValeurCmp = SD101C-TR;
+IdModule  = bus_sonar10:Diode_DO-41_SOD81_Horizontal_RM10;
+EndCmp
+
+BeginCmp
+TimeStamp = /542FE734;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = bus_sonar10:T1_LED;
+EndCmp
+
+BeginCmp
+TimeStamp = /53AA4798;
+Reference = G1;
+ValeurCmp = OSHW_LOGO;
+IdModule  = bus_sonar10:OSHW_LOGO_400mil;
+EndCmp
+
+BeginCmp
+TimeStamp = /53AA33AA;
+Reference = H1;
+ValeurCmp = 3MM_HOLE;
+IdModule  = bus_sonar10:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E9AFD9;
+Reference = H2;
+ValeurCmp = 3MM_HOLE;
+IdModule  = bus_sonar10:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E9B07B;
+Reference = H3;
+ValeurCmp = 3MM_HOLE;
+IdModule  = bus_sonar10:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E9B0DD;
+Reference = H4;
+ValeurCmp = 3MM_HOLE;
+IdModule  = bus_sonar10:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E96A70;
+Reference = J1;
+ValeurCmp = TERMINATE_JUMPER;
+IdModule  = bus_sonar10:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E9683A;
+Reference = N1;
+ValeurCmp = BUS_SLAVE_HEADER;
+IdModule  = bus_sonar10:Pin_Header_Straight_2x05_Shrouded;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E96ADF;
+Reference = N2;
+ValeurCmp = FTDI_HEADER;
+IdModule  = bus_sonar10:Pin_Header_Straight_1x06;
+EndCmp
+
+BeginCmp
+TimeStamp = /53F184B0;
+Reference = N3;
+ValeurCmp = 302-S401;
+IdModule  = bus_sonar10:Pin_Header_Straight_2x20_Shrouded;
+EndCmp
+
+BeginCmp
+TimeStamp = /53F18627;
+Reference = N4;
+ValeurCmp = 302-S401;
+IdModule  = bus_sonar10:Pin_Header_Straight_2x20_Shrouded;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA42CF;
+Reference = R1;
+ValeurCmp = .47;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EAC63C;
+Reference = R2;
+ValeurCmp = 22K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EAC7FD;
+Reference = R3;
+ValeurCmp = 33K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EACA5C;
+Reference = R4;
+ValeurCmp = 100K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EACAD9;
+Reference = R5;
+ValeurCmp = 100K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E99224;
+Reference = R6;
+ValeurCmp = .47;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E99988;
+Reference = R7;
+ValeurCmp = 10K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /542FA869;
+Reference = R8;
+ValeurCmp = 100K;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /542FE392;
+Reference = R9;
+ValeurCmp = 470;
+IdModule  = bus_sonar10:Resistor_Horizontal_400;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E9A9CA;
+Reference = SW1;
+ValeurCmp = MJTP1243;
+IdModule  = bus_sonar10:Button_6.5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA309B;
+Reference = U1;
+ValeurCmp = 74HCT08;
+IdModule  = bus_sonar10:DIP-14__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA3E06;
+Reference = U2;
+ValeurCmp = LM2940;
+IdModule  = bus_sonar10:TO-220_Neutral123_Horizontal_LargePads;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E968BB;
+Reference = U3;
+ValeurCmp = MCP2562;
+IdModule  = bus_sonar10:DIP-8__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E952D0;
+Reference = U4;
+ValeurCmp = ATMEGA328_DIP28;
+IdModule  = bus_sonar10:DIP-28__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /53F1893A;
+Reference = U5;
+ValeurCmp = 74HCT32;
+IdModule  = bus_sonar10:DIP-14__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /53EA6D8D;
+Reference = X1;
+ValeurCmp = 16MHz;
+IdModule  = bus_sonar10:Crystal_HC49-U_Vertical;
+EndCmp
+
+EndListe

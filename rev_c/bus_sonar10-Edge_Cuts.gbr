@@ -1,6 +1,6 @@
 %FSLAX36Y36*%
 G04 Gerber Fmt 3.6, Leading zero omitted, Abs format (unit inch)*
-G04 Created by KiCad (PCBNEW (2014-jul-16 BZR unknown)-product) date Fri 17 Oct 2014 08:42:51 AM PDT*
+G04 Created by KiCad (PCBNEW (2014-jul-16 BZR unknown)-product) date Sun 19 Oct 2014 06:56:34 PM PDT*
 %MOIN*%
 G01*
 G04 APERTURE LIST*

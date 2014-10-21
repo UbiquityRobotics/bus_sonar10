@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Fri 17 Oct 2014 08:03:49 AM PDT
+Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Tue 21 Oct 2014 10:38:30 AM PDT
 
 BeginCmp
 TimeStamp = /53EA7619;
@@ -227,7 +227,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54412CC5;
 Reference = R10;
-ValeurCmp = 100K;
+ValeurCmp = 100Kx8;
 IdModule  = bus_sonar10:Pin_Header_Straight_1x09;
 EndCmp
 

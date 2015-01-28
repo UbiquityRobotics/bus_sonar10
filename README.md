@@ -165,6 +165,10 @@ All the connections are summerized in the table below:
 
 * References for D1 and R7 are transposed. [x]
 
+### Rev. C
+
+- No ISP connector.
+
 ## Software
 
 The software is developed using the arduino-mk package.

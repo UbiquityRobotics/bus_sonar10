@@ -1028,8 +1028,6 @@ Connection ~ 2400 6450
 Wire Wire Line
 	1800 6950 1800 7350
 Wire Wire Line
-	1600 7800 5300 7800
-Wire Wire Line
 	1800 7750 1800 7800
 Connection ~ 1800 7800
 Wire Wire Line
@@ -1084,17 +1082,6 @@ Connection ~ 4800 6950
 Wire Wire Line
 	5100 7400 5000 7400
 Connection ~ 5100 6950
-Wire Wire Line
-	5200 6600 5200 7800
-Wire Wire Line
-	5200 6600 5300 6600
-Wire Wire Line
-	5300 7000 5200 7000
-Connection ~ 5200 7000
-Wire Wire Line
-	5300 7400 5200 7400
-Connection ~ 5200 7400
-Connection ~ 5200 7800
 Wire Wire Line
 	4400 7400 4000 7400
 Connection ~ 1550 6250
@@ -1770,4 +1757,10 @@ Wire Wire Line
 Wire Wire Line
 	6500 3700 6800 3700
 Connection ~ 5100 5100
+NoConn ~ 5300 6600
+NoConn ~ 5300 7000
+NoConn ~ 5300 7400
+NoConn ~ 5300 7800
+Wire Wire Line
+	1600 7800 4000 7800
 $EndSCHEMATC

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Sat 31 Jan 2015 10:20:30 PM PST
+Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Thu 12 Feb 2015 10:40:39 PM PST
 
 BeginCmp
 TimeStamp = /53EA7619;
@@ -10,7 +10,7 @@ EndCmp
 BeginCmp
 TimeStamp = /53EA3E9D;
 Reference = C2;
-ValeurCmp = 22uF;
+ValeurCmp = 22uF_35V_ALUM;
 IdModule  = bus_sonar10:Capacitor4x3RM2-5_RevB;
 EndCmp
 
@@ -31,7 +31,7 @@ EndCmp
 BeginCmp
 TimeStamp = /53EA4CB4;
 Reference = C5;
-ValeurCmp = 22uF;
+ValeurCmp = 22uF_6.3V_TANT;
 IdModule  = bus_sonar10:Capacitor4x3RM2-5_RevB;
 EndCmp
 

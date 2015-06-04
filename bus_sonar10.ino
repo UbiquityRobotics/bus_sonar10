@@ -31,94 +31,9 @@ NULL_UART null_uart;
 #endif // defined(UDR1)
 
 // Define the pin names alphabetically:
-//static const UByte bus_standby_pin = A4;
 static const UByte bus_standby_pin = A5;
-static const UByte direction_1a_pin = 7;
-static const UByte direction_enable_12_pin = 10;
-static const UByte direction_2a_pin = 12;
-static const UByte direction_3a_pin = 11;
-static const UByte direction_enable_34_pin = 9;
-static const UByte direction_enable_4a_pin = 8;
-static const UByte encoder1_phase_a_pin = A0;
-static const UByte encoder1_phase_b_pin = A1;
-static const UByte encoder2_phase_a_pin = A2;
-static const UByte encoder2_phase_b_pin = A3;
-static const UByte encoders_enable_pin = 6;
 static const UByte led_pin = 13;
 
-// Encoder buffer:
-#define BUFFER_POWER 8
-#define BUFFER_SIZE (1 << BUFFER_POWER)
-#define BUFFER_MASK (BUFFER_SIZE - 1)
-static UByte encoder_buffer[BUFFER_SIZE];
-static volatile UByte encoder_buffer_in = 0;
-static volatile UByte encoder_buffer_out = 0;
-
-// There are two encoders:
-//
-//    Encoder   Phase  Arduino Pin   PCInt
-//    =======   =====  ===========   =======
-//      1	  A        A0        PCInt8
-//      1         B        A1        PCInt9
-//      2         A        A2        PCInt10
-//      2         B        A3        PCInt11
-
-// This table is computed by bus_sonar10.py
-// Please read the comment in the Python code to understand
-// the structure of the *state_transition_table* below:
-static Byte state_transition_table[32] = {
-    //            ccccc         sgg   // [xx]: SGG[gg] => sgg +/-
-    (signed char)((0x00 << 3) | 0x0), // [00]: 000[00] => 000  0
-    (signed char)((0x1f << 3) | 0x4), // [01]: 001[00] => 100 -1
-    (signed char)((0x01 << 3) | 0x0), // [02]: 010[00] => 000 +1
-    (signed char)((0x02 << 3) | 0x0), // [03]: 011[00] => 000 +2
-    (signed char)((0x00 << 3) | 0x4), // [04]: 100[00] => 100  0
-    (signed char)((0x1f << 3) | 0x4), // [05]: 101[00] => 100 -1
-    (signed char)((0x01 << 3) | 0x0), // [06]: 110[00] => 000 +1
-    (signed char)((0x1e << 3) | 0x4), // [07]: 111[00] => 100 -2
-    (signed char)((0x01 << 3) | 0x1), // [08]: 1000[01] => 001 +1
-    (signed char)((0x00 << 3) | 0x1), // [09]: 1001[01] => 001  0
-    (signed char)((0x02 << 3) | 0x1), // [10]: 1010[01] => 001 +2
-    (signed char)((0x1f << 3) | 0x5), // [11]: 1011[01] => 101 -1
-    (signed char)((0x01 << 3) | 0x1), // [12]: 1100[01] => 001 +1
-    (signed char)((0x00 << 3) | 0x5), // [13]: 1101[01] => 101  0
-    (signed char)((0x1e << 3) | 0x5), // [14]: 1110[01] => 101 -2
-    (signed char)((0x1f << 3) | 0x5), // [15]: 1111[01] => 101 -1
-    (signed char)((0x1f << 3) | 0x6), // [16]: 10000[10] => 110 -1
-    (signed char)((0x02 << 3) | 0x2), // [17]: 10001[10] => 010 +2
-    (signed char)((0x00 << 3) | 0x2), // [18]: 10010[10] => 010  0
-    (signed char)((0x01 << 3) | 0x2), // [19]: 10011[10] => 010 +1
-    (signed char)((0x1f << 3) | 0x6), // [20]: 10100[10] => 110 -1
-    (signed char)((0x1e << 3) | 0x6), // [21]: 10101[10] => 110 -2
-    (signed char)((0x00 << 3) | 0x6), // [22]: 10110[10] => 110  0
-    (signed char)((0x01 << 3) | 0x2), // [23]: 10111[10] => 010 +1
-    (signed char)((0x02 << 3) | 0x3), // [24]: 11000[11] => 011 +2
-    (signed char)((0x01 << 3) | 0x3), // [25]: 11001[11] => 011 +1
-    (signed char)((0x1f << 3) | 0x7), // [26]: 11010[11] => 111 -1
-    (signed char)((0x00 << 3) | 0x3), // [27]: 11011[11] => 011  0
-    (signed char)((0x1e << 3) | 0x7), // [28]: 11100[11] => 111 -2
-    (signed char)((0x01 << 3) | 0x3), // [29]: 11101[11] => 011 +1
-    (signed char)((0x1f << 3) | 0x7), // [30]: 11110[11] => 111 -1
-    (signed char)((0x00 << 3) | 0x7), // [31]: 11111[11] => 111  0
-};
-
-// PID constants:
-
-// *PCINT1_vect*() is the interrupt service routine for the
-// pin change interrupts PCINT8/.../15.  The two encoders are
-// attached to PCINT8/9/10/11, so these are the bits we want
-// to capture.  This routine just stuffs the encoder bits
-// into a buffer:
-
-ISR(PCINT1_vect) {
-  // Stuff the port C input bits into *buffer* and advance *buffer_in*:
-  encoder_buffer[encoder_buffer_in] = PINC;
-  encoder_buffer_in = (encoder_buffer_in + 1) & BUFFER_MASK;
-  //Serial.print('.');
-  //UDR0 = '.';
-}
-
-//static UByte address = 33;
 static UByte address = 40;
 
 Bus_Slave bus_slave(bus_uart, debug_uart);
@@ -134,49 +49,10 @@ void loop() {
   switch (TEST) {
     case TEST_BUS_COMMAND: {
       // Encoder positions and state:
-      static UByte encoder1_state = 0;
-      static UByte encoder2_state = 0;
 
       // Deal with any *bus* related activities:
       bus_slave.slave_mode(address, command_process);
 
-      // Deal with encoder issues:
-      if (encoder_buffer_in != encoder_buffer_out) {
-	// Grab all 4 encoder bits from *encoder_buffer*:
-	UByte encoder_bits = encoder_buffer[encoder_buffer_out];
-	encoder_buffer_out = (encoder_buffer_out + 1) & BUFFER_MASK;
-
-	// Just print out *encoder_bits*:
-	//Serial.print(encoder_bits & 0x3);
-	//Serial.print(":");
-	//Serial.print((encoder_bits >> 2) & 0x3);
-	//Serial.print("\n");
-
-	// Process encoder1:
-	// *encoder1_state* has 3 bits of state - '0000 0sss'.
-	// We take encoder1 bits encoder from *encoder_bits* ('0000 00ee'),
-	// shift them left by 3, and OR them with the *encoder1_state*:
-	//
-	//     encoder1_state:  0000 0sss
-	//     encoder_bits<<3: 000e e000
-	//  OR ==========================
-	//     index            000e esss
-	//
-	UByte index = ((encoder_bits & 0x3) << 3) | encoder1_state;
-
-	// Note that *state_transition* is signed.
-	Byte state_transition = state_transition_table[index];
-	bus_sonar10._encoder1 += state_transition >> 3;
-	encoder1_state = (unsigned char)(state_transition & 0x7);
-
-	// Process encoder2:
-	// Now we do the same for encoder2 whose bits are 2 bits over
-	// ('0000 eexx'):
-	index = ((encoder_bits & 0xc) << 1) | encoder2_state;
-	state_transition = state_transition_table[index];
-	bus_sonar10._encoder2 += state_transition >> 3;
-	encoder2_state = (unsigned char)(state_transition & 0x7);
-      }
       break;
     }
     case TEST_BUS_ECHO: {
@@ -288,32 +164,6 @@ void setup() {
   // into active mode:
   pinMode(bus_standby_pin, OUTPUT);
   digitalWrite(bus_standby_pin, LOW);
-
-  // Set up the H-Bridge pins:
-  pinMode(direction_1a_pin, OUTPUT);
-  pinMode(direction_enable_12_pin, OUTPUT);
-  pinMode(direction_2a_pin, OUTPUT);
-  pinMode(direction_3a_pin, OUTPUT);
-  pinMode(direction_enable_34_pin, OUTPUT);
-  pinMode(direction_enable_4a_pin, OUTPUT);  
-
-  // Disable the motors:
-  digitalWrite(direction_1a_pin, LOW);
-  digitalWrite(direction_enable_12_pin, LOW);
-  digitalWrite(direction_2a_pin, LOW);
-  digitalWrite(direction_3a_pin, LOW);
-  digitalWrite(direction_enable_34_pin, LOW);
-  digitalWrite(direction_enable_4a_pin, LOW);
-
-  // Set up the encoder pins:
-  pinMode(encoder1_phase_a_pin, INPUT);
-  pinMode(encoder1_phase_b_pin, INPUT);
-  pinMode(encoder2_phase_a_pin, INPUT);
-  pinMode(encoder2_phase_b_pin, INPUT);
-  pinMode(encoders_enable_pin, OUTPUT);
-
-  // Turn on encoder LED's:
-  digitalWrite(encoders_enable_pin, HIGH);
 
   // Set up Interrupt on Pin Change interrupt vector.  The encoder
   // pins are attached to PCINT8/9/10/11, so we only need to set

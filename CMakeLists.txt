@@ -61,6 +61,10 @@ add_service_files(
   Encoder1_Set.srv
   Encoder2_Get.srv
   Encoder2_Set.srv
+  Select_Get.srv
+  Select_Set.srv
+  Distance_Get.srv
+  Distance_Set.srv
 )
 
 ## Generate actions in the 'action' folder

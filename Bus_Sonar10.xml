@@ -31,4 +31,16 @@
       This function will reset both encoders to zero.
     </Description>
   </Function>
+  <Register Name="Select" Type="UByte" Number="8"
+   Brief="Select">
+    <Description>
+      This register selects the current sonar.
+    </Description>
+  </Register>
+  <Register Name="Distance" Type="UShort" Number="10"
+   Brief="Distance">
+    <Description>
+      This register returns the latest selected sonar value.
+    </Description>
+  </Register>
 </Module>

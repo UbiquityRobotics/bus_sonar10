@@ -27,17 +27,28 @@ class Bus_Sonar10 : public Bus_Module {
     Integer encoder2_get();
     void encoder2_set(Integer encoder2);
 
+    // Select
+    UByte select_get();
+    void select_set(UByte select);
+
+    // Distance
+    UShort distance_get();
+    void distance_set(UShort distance);
+
     // Reset both encoders to zero.
     void encoders_reset();
 
   //////// Edit begins here: PRIVATE
-  //private:
+  private:
     // Pin definitions:
-    static const UByte _bus_standby_pin = A4;
-    static const UByte _led_pin = 13;
-    Logical _led;
-    Integer _encoder1;
-    Integer _encoder2;
+    static const UByte sonars_count_ = 10;
+    static const UByte bus_standby_pin_ = A4;
+    static const UByte led_pin_ = 13;
+    UShort distances_[sonars_count_];
+    Logical led_;
+    Integer encoder1_;
+    Integer encoder2_;
+    UByte select_;
   //////// Edit ends here: PRIVATE
 };
 

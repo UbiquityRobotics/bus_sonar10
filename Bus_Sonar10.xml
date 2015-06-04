@@ -13,24 +13,6 @@
       This register controls the on-board LED.
     </Description>
   </Register>
-  <Register Name="Encoder1" Type="Integer" Number="2"
-   Brief="Encoder 1">
-    <Description>
-      This register is associated with the first encoder.
-    </Description>
-  </Register>
-  <Register Name="Encoder2" Type="Integer" Number="4"
-   Brief="Encoder 2">
-    <Description>
-      This register is associated with the second encoder.
-    </Description>
-  </Register>
-  <Function Name="Encoders_Reset" Number="6"
-   Brief="Reset both encoders to zero.">
-    <Description>
-      This function will reset both encoders to zero.
-    </Description>
-  </Function>
   <Register Name="Select" Type="UByte" Number="8"
    Brief="Select">
     <Description>

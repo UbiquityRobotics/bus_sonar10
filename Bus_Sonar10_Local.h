@@ -19,14 +19,6 @@ class Bus_Sonar10 : public Bus_Module {
     Logical led_get();
     void led_set(Logical led);
 
-    // Encoder 1
-    Integer encoder1_get();
-    void encoder1_set(Integer encoder1);
-
-    // Encoder 2
-    Integer encoder2_get();
-    void encoder2_set(Integer encoder2);
-
     // Select
     UByte select_get();
     void select_set(UByte select);
@@ -34,9 +26,6 @@ class Bus_Sonar10 : public Bus_Module {
     // Distance
     UShort distance_get();
     void distance_set(UShort distance);
-
-    // Reset both encoders to zero.
-    void encoders_reset();
 
   //////// Edit begins here: PRIVATE
   private:

@@ -10,8 +10,6 @@
 Bus_Sonar10::Bus_Sonar10(UByte address) {
   //////// Edit begins here: CONSTRUCTOR
   led_set(1);
-  encoder1_set(12345678);
-  encoder2_set(87654321);
   for (UByte sonar = 0; sonar < sonars_count_; sonar++) {
     distances_[sonar] = sonar * 100 + 1;
   }
@@ -34,38 +32,6 @@ void Bus_Sonar10::led_set(Logical led) {
   led = led_;
   digitalWrite(13, led);
   //////// Edit ends here: LED_SET
-}
-
-// encoder1_get: Encoder 1
-Integer Bus_Sonar10::encoder1_get() {
-  Integer result = 0;
-  //////// Edit begins here: ENCODER1_GET
-  result = encoder1_;
-  //////// Edit ends here: ENCODER1_GET
-  return result;
-}
-
-// encoder1_set: Encoder 1
-void Bus_Sonar10::encoder1_set(Integer encoder1) {
-  //////// Edit begins here: ENCODER1_SET
-  encoder1_ = encoder1;
-  //////// Edit ends here: ENCODER1_SET
-}
-
-// encoder2_get: Encoder 2
-Integer Bus_Sonar10::encoder2_get() {
-  Integer result = 0;
-  //////// Edit begins here: ENCODER2_GET
-  result = encoder2_;
-  //////// Edit ends here: ENCODER2_GET
-  return result;
-}
-
-// encoder2_set: Encoder 2
-void Bus_Sonar10::encoder2_set(Integer encoder2) {
-  //////// Edit begins here: ENCODER2_SET
-  encoder2_ = encoder2;
-  //////// Edit ends here: ENCODER2_SET
 }
 
 // select_get: Select
@@ -103,14 +69,6 @@ void Bus_Sonar10::distance_set(UShort distance) {
   //////// Edit ends here: DISTANCE_SET
 }
 
-// encoders_reset: Reset both encoders to zero.
-void Bus_Sonar10::encoders_reset() {
-  //////// Edit begins here: ENCODERS_RESET
-  encoder1_ = 0;
-  encoder2_ = 0;
-  //////// Edit ends here: ENCODERS_RESET
-}
-
 // command_process: Command process
 UByte Bus_Sonar10::command_process(Bus_Slave *bus_slave, UByte command, Logical execute_mode) {
   switch (command) {
@@ -127,38 +85,6 @@ UByte Bus_Sonar10::command_process(Bus_Slave *bus_slave, UByte command, Logical 
       Logical led = bus_slave->logical_get();
       if (execute_mode) {
         led_set(led);
-      }
-      break;
-    }
-    case 2: {
-      // encoder1_get: Encoder 1
-      if (execute_mode) {
-        Integer encoder1 = encoder1_get();
-        bus_slave->integer_put(encoder1);
-      }
-      break;
-    }
-    case 3: {
-      // encoder1_set: Encoder 1
-      Integer encoder1 = bus_slave->integer_get();
-      if (execute_mode) {
-        encoder1_set(encoder1);
-      }
-      break;
-    }
-    case 4: {
-      // encoder2_get: Encoder 2
-      if (execute_mode) {
-        Integer encoder2 = encoder2_get();
-        bus_slave->integer_put(encoder2);
-      }
-      break;
-    }
-    case 5: {
-      // encoder2_set: Encoder 2
-      Integer encoder2 = bus_slave->integer_get();
-      if (execute_mode) {
-        encoder2_set(encoder2);
       }
       break;
     }
@@ -191,13 +117,6 @@ UByte Bus_Sonar10::command_process(Bus_Slave *bus_slave, UByte command, Logical 
       UShort distance = bus_slave->ushort_get();
       if (execute_mode) {
         distance_set(distance);
-      }
-      break;
-    }
-    case 6: {
-      // encoders_reset: Reset both encoders to zero.
-      if (execute_mode) {
-        encoders_reset();
       }
       break;
     }

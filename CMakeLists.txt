@@ -57,10 +57,6 @@ add_service_files(
   FILES
   LED_Get.srv
   LED_Set.srv
-  Encoder1_Get.srv
-  Encoder1_Set.srv
-  Encoder2_Get.srv
-  Encoder2_Set.srv
   Select_Get.srv
   Select_Set.srv
   Distance_Get.srv

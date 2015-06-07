@@ -16,7 +16,8 @@
 #define UART1_DISABLED
 
 #include <Bus_Slave.h>
-#include "Bus_Sonar10_Local.h"
+#include <Bus_Sonar10_Local.h>
+#include <Sonar.h>
 
 // The null object can be used for *debug_uart*:
 NULL_UART null_uart;

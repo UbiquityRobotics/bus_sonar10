@@ -59,8 +59,8 @@ void Bus_Sonar10::select_set(UByte select) {
 UShort Bus_Sonar10::distance_get() {
   UShort result = 0;
   //////// Edit begins here: DISTANCE_GET
-  result = (UShort)(
-   sonar_controller.getLastDistInMm(select_)/(float)(10.0) + (float)(0.5));
+  UShort mm_distance = sonar_controller.mm_distance_get(select_);
+  result = (mm_distance + 5) / 10;
   //result = select_ * 100;
   //////// Edit ends here: DISTANCE_GET
   return result;

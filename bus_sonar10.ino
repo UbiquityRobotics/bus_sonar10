@@ -35,16 +35,16 @@ NULL_UART null_uart;
 #endif // defined(UDR1)
 
 // Create the sonar data structures:
-Sonar sonar0(0, 1, _BV(1), &PINC, (UByte)_BV(1), &PINB, (UByte)_BV(1) );
-Sonar sonar1(1, 1, _BV(1), &PINB, (UByte)_BV(5), &PINB, (UByte)_BV(1) );
-Sonar sonar2(2, 2, _BV(6), &PINC, (UByte)_BV(0), &PIND, (UByte)_BV(6) );
-Sonar sonar3(3, 2, _BV(5), &PINB, (UByte)_BV(4), &PIND, (UByte)_BV(5) );
-Sonar sonar4(4, 2, _BV(5), &PINB, (UByte)_BV(0), &PIND, (UByte)_BV(5) );
-Sonar sonar5(5, 1, _BV(3), &PINC, (UByte)_BV(3), &PINB, (UByte)_BV(3) );
-Sonar sonar6(6, 1, _BV(3), &PINC, (UByte)_BV(2), &PINB, (UByte)_BV(3) );
-Sonar sonar7(7, 1, _BV(2), &PIND, (UByte)_BV(7), &PINB, (UByte)_BV(2) );
-Sonar sonar8(8, 2, _BV(3), &PIND, (UByte)_BV(4), &PIND, (UByte)_BV(3) );
-Sonar sonar9(9, 2, _BV(3), &PIND, (UByte)_BV(2), &PIND, (UByte)_BV(3) );
+Sonar sonar0(1, _BV(1), &PINC, (UByte)_BV(1), &PINB, (UByte)_BV(1) );
+Sonar sonar1(1, _BV(1), &PINB, (UByte)_BV(5), &PINB, (UByte)_BV(1) );
+Sonar sonar2(2, _BV(6), &PINC, (UByte)_BV(0), &PIND, (UByte)_BV(6) );
+Sonar sonar3(2, _BV(5), &PINB, (UByte)_BV(4), &PIND, (UByte)_BV(5) );
+Sonar sonar4(2, _BV(5), &PINB, (UByte)_BV(0), &PIND, (UByte)_BV(5) );
+Sonar sonar5(1, _BV(3), &PINC, (UByte)_BV(3), &PINB, (UByte)_BV(3) );
+Sonar sonar6(1, _BV(3), &PINC, (UByte)_BV(2), &PINB, (UByte)_BV(3) );
+Sonar sonar7(1, _BV(2), &PIND, (UByte)_BV(7), &PINB, (UByte)_BV(2) );
+Sonar sonar8(2, _BV(3), &PIND, (UByte)_BV(4), &PIND, (UByte)_BV(3) );
+Sonar sonar9(2, _BV(3), &PIND, (UByte)_BV(2), &PIND, (UByte)_BV(3) );
 
 Sonar *sonars[] = {
   &sonar0,

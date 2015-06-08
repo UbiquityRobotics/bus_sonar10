@@ -19,6 +19,9 @@
 #include <Bus_Sonar10_Local.h>
 #include <Sonar.h>
 
+// This is the initial address of the module:
+static UByte address = 40;
+
 // The null object can be used for *debug_uart*:
 NULL_UART null_uart;
 
@@ -31,14 +34,50 @@ NULL_UART null_uart;
   UART *bus_uart = (UART *)&avr_uart0;
 #endif // defined(UDR1)
 
+// Create the sonar data structures:
+Sonar sonar0(0, 1, _BV(1), &PINC, (UByte)_BV(1), &PINB, (UByte)_BV(1) );
+Sonar sonar1(1, 1, _BV(1), &PINB, (UByte)_BV(5), &PINB, (UByte)_BV(1) );
+Sonar sonar2(2, 2, _BV(6), &PINC, (UByte)_BV(0), &PIND, (UByte)_BV(6) );
+Sonar sonar3(3, 2, _BV(5), &PINB, (UByte)_BV(4), &PIND, (UByte)_BV(5) );
+Sonar sonar4(4, 2, _BV(5), &PINB, (UByte)_BV(0), &PIND, (UByte)_BV(5) );
+Sonar sonar5(5, 1, _BV(3), &PINC, (UByte)_BV(3), &PINB, (UByte)_BV(3) );
+Sonar sonar6(6, 1, _BV(3), &PINC, (UByte)_BV(2), &PINB, (UByte)_BV(3) );
+Sonar sonar7(7, 1, _BV(2), &PIND, (UByte)_BV(7), &PINB, (UByte)_BV(2) );
+Sonar sonar8(8, 2, _BV(3), &PIND, (UByte)_BV(4), &PIND, (UByte)_BV(3) );
+Sonar sonar9(9, 2, _BV(3), &PIND, (UByte)_BV(2), &PIND, (UByte)_BV(3) );
+
+Sonar *sonars[] = {
+  &sonar0,
+  &sonar1,
+  &sonar2,
+  &sonar3,
+  &sonar4,
+  &sonar5,
+  &sonar6,
+  &sonar7,
+  &sonar8,
+  &sonar9,
+  (Sonar *)0,
+};
+
+Sonar_Controller sonar_controller((UART *)debug_uart, sonars);
+
 // Define the pin names alphabetically:
 static const UByte bus_standby_pin = A5;
 static const UByte led_pin = 13;
 
-static UByte address = 40;
-
 Bus_Slave bus_slave(bus_uart, debug_uart);
 Bus_Sonar10 bus_sonar10(address);
+
+// Do the two ISR's for the Sonar here:
+
+ISR(PCINT0_vect) {
+  Sonar_Controller::interrupt_handler(1);
+}
+
+ISR(PCINT2_vect) {
+  Sonar_Controller::interrupt_handler(2);
+}
 
 UByte command_process(Bus_Slave *bus_slave, 
  UByte command, Logical execute_mode) {
@@ -53,6 +92,7 @@ void loop() {
 
       // Deal with any *bus* related activities:
       bus_slave.slave_mode(address, command_process);
+      sonar_controller.poll();
 
       break;
     }
@@ -166,18 +206,13 @@ void setup() {
   pinMode(bus_standby_pin, OUTPUT);
   digitalWrite(bus_standby_pin, LOW);
 
-  // Set up Interrupt on Pin Change interrupt vector.  The encoder
-  // pins are attached to PCINT8/9/10/11, so we only need to set
-  // PCMSK1 to '0000 1111':
-  PCMSK1 = _BV(3) | _BV(2) | _BV(1) | _BV(0);
+  // Set up the sonar controller software module:
+  sonar_controller.initialize();
 
-  // Now enable interrup on changes for PCINT8/.../15, by setting
-  // PCICR to 1.  Thus, PCICR is set to 'xxxx x010' or '0000 0010':
-  PCICR = _BV(1);
-
-  // Enable global interrupts by setting the I bit (7th bit) in the
-  // status register:
-  //SREG |= _BV(7);
+  // Enable change interupts for PICINT1...8 and PCINT17...24:
+  //PCMSK0 = 0;
+  //PCMSK2 = 0;
+  //PCIR = _BV(2) | _BV(0);
 
   // Enable/disable interrupts based on *TEST*:
   switch (TEST) {

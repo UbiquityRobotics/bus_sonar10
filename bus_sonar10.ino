@@ -38,16 +38,16 @@ Sonar_Queue b_sonar_queue(1, &PINB);
 Sonar_Queue d_sonar_queue(2, &PIND);
 
 // Create the sonar data structures:
-Sonar sonar0(1, _BV(1), &PINC, _BV(1), &b_sonar_queue, &PINB, _BV(1) );
-Sonar sonar1(1, _BV(1), &PINB, _BV(5), &b_sonar_queue, &PINB, _BV(1) );
-Sonar sonar2(2, _BV(6), &PINC, _BV(0), &d_sonar_queue, &PIND, _BV(6) );
-Sonar sonar3(2, _BV(5), &PINB, _BV(4), &d_sonar_queue, &PIND, _BV(5) );
-Sonar sonar4(2, _BV(5), &PINB, _BV(0), &d_sonar_queue, &PIND, _BV(5) );
-Sonar sonar5(1, _BV(3), &PINC, _BV(3), &b_sonar_queue, &PINB, _BV(3) );
-Sonar sonar6(1, _BV(3), &PINC, _BV(2), &b_sonar_queue, &PINB, _BV(3) );
-Sonar sonar7(1, _BV(2), &PIND, _BV(7), &b_sonar_queue, &PINB, _BV(2) );
-Sonar sonar8(2, _BV(3), &PIND, _BV(4), &d_sonar_queue, &PIND, _BV(3) );
-Sonar sonar9(2, _BV(3), &PIND, _BV(2), &d_sonar_queue, &PIND, _BV(3) );
+Sonar sonar0(1, 1, &PINC, 1, &b_sonar_queue, &PINB, 1);
+Sonar sonar1(1, 1, &PINB, 5, &b_sonar_queue, &PINB, 1);
+Sonar sonar2(2, 6, &PINC, 0, &d_sonar_queue, &PIND, 6);
+Sonar sonar3(2, 5, &PINB, 4, &d_sonar_queue, &PIND, 5);
+Sonar sonar4(2, 5, &PINB, 0, &d_sonar_queue, &PIND, 5);
+Sonar sonar5(1, 3, &PINC, 3, &b_sonar_queue, &PINB, 3);
+Sonar sonar6(1, 3, &PINC, 2, &b_sonar_queue, &PINB, 3);
+Sonar sonar7(1, 2, &PIND, 7, &b_sonar_queue, &PINB, 2);
+Sonar sonar8(2, 3, &PIND, 4, &d_sonar_queue, &PIND, 3);
+Sonar sonar9(2, 3, &PIND, 2, &d_sonar_queue, &PIND, 3);
 
 Sonar *sonars[] = {
   &sonar0,

@@ -5,7 +5,7 @@
 // Put top level includes, typedef's here:
   //////// Edit begins here: TOP_LEVEL
   #include <Sonar.h>
-  extern Sonar_Controller sonar_controller;
+  extern Sonars_Controller sonars_controller;
   //////// Edit ends here: TOP_LEVEL
 
 // Constructor
@@ -59,7 +59,7 @@ void Bus_Sonar10::select_set(UByte select) {
 UShort Bus_Sonar10::distance_get() {
   UShort result = 0;
   //////// Edit begins here: DISTANCE_GET
-  UShort mm_distance = sonar_controller.mm_distance_get(select_);
+  UShort mm_distance = sonars_controller.mm_distance_get(select_);
   result = (mm_distance + 5) / 10;
   //result = select_ * 100;
   //////// Edit ends here: DISTANCE_GET

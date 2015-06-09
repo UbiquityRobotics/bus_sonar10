@@ -69,7 +69,17 @@ Sonar_Queue *sonar_queues[] = {
   (Sonar_Queue *)0,
 };
 
-Sonar_Controller sonar_controller((UART *)debug_uart, sonars, sonar_queues);
+UByte sonars_schedule[] = {
+  0, 5, 250,
+  1, 6, 250,
+  2, 7, 250,
+  3, 8, 250,
+  4, 9, 250,
+  255,
+};
+
+Sonars_Controller sonars_controller((UART *)debug_uart,
+ sonars, sonar_queues, sonars_schedule);
 
 // Define the pin names alphabetically:
 static const UByte bus_standby_pin = A5;
@@ -81,11 +91,11 @@ Bus_Sonar10 bus_sonar10(address);
 // Do the two ISR's for the Sonar here:
 
 ISR(PCINT0_vect) {
-  Sonar_Controller::interrupt_handler(1);
+  Sonars_Controller::interrupt_handler(1);
 }
 
 ISR(PCINT2_vect) {
-  Sonar_Controller::interrupt_handler(2);
+  Sonars_Controller::interrupt_handler(2);
 }
 
 UByte command_process(Bus_Slave *bus_slave, 
@@ -101,7 +111,7 @@ void loop() {
 
       // Deal with any *bus* related activities:
       bus_slave.slave_mode(address, command_process);
-      sonar_controller.poll();
+      sonars_controller.poll();
 
       break;
     }
@@ -216,7 +226,7 @@ void setup() {
   digitalWrite(bus_standby_pin, LOW);
 
   // Set up the sonar controller software module:
-  sonar_controller.initialize();
+  sonars_controller.initialize();
 
   // Enable change interupts for PICINT1...8 and PCINT17...24:
   //PCMSK0 = 0;

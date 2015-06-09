@@ -38,16 +38,16 @@ Sonar_Queue b_sonar_queue(1, &PINB);
 Sonar_Queue d_sonar_queue(2, &PIND);
 
 // Create the sonar data structures:
-Sonar sonar0(1, 1, &PINC, 1, &b_sonar_queue, &PINB, 1);
-Sonar sonar1(1, 1, &PINB, 5, &b_sonar_queue, &PINB, 1);
-Sonar sonar2(2, 6, &PINC, 0, &d_sonar_queue, &PIND, 6);
-Sonar sonar3(2, 5, &PINB, 4, &d_sonar_queue, &PIND, 5);
-Sonar sonar4(2, 5, &PINB, 0, &d_sonar_queue, &PIND, 5);
-Sonar sonar5(1, 3, &PINC, 3, &b_sonar_queue, &PINB, 3);
-Sonar sonar6(1, 3, &PINC, 2, &b_sonar_queue, &PINB, 3);
-Sonar sonar7(1, 2, &PIND, 7, &b_sonar_queue, &PINB, 2);
-Sonar sonar8(2, 3, &PIND, 4, &d_sonar_queue, &PIND, 3);
-Sonar sonar9(2, 3, &PIND, 2, &d_sonar_queue, &PIND, 3);
+Sonar sonar0(&PINC, 1, &b_sonar_queue, 1, &PINB, 1);
+Sonar sonar1(&PINB, 5, &b_sonar_queue, 1, &PINB, 1);
+Sonar sonar2(&PINC, 0, &d_sonar_queue, 6, &PIND, 6);
+Sonar sonar3(&PINB, 4, &d_sonar_queue, 5, &PIND, 5);
+Sonar sonar4(&PINB, 0, &d_sonar_queue, 5, &PIND, 5);
+Sonar sonar5(&PINC, 3, &b_sonar_queue, 3, &PINB, 3);
+Sonar sonar6(&PINC, 2, &b_sonar_queue, 3, &PINB, 3);
+Sonar sonar7(&PIND, 7, &b_sonar_queue, 2, &PINB, 2);
+Sonar sonar8(&PIND, 4, &d_sonar_queue, 3, &PIND, 3);
+Sonar sonar9(&PIND, 2, &d_sonar_queue, 3, &PIND, 3);
 
 Sonar *sonars[] = {
   &sonar0,
@@ -63,7 +63,13 @@ Sonar *sonars[] = {
   (Sonar *)0,
 };
 
-Sonar_Controller sonar_controller((UART *)debug_uart, sonars);
+Sonar_Queue *sonar_queues[] = {
+  &b_sonar_queue,
+  &d_sonar_queue,
+  (Sonar_Queue *)0,
+};
+
+Sonar_Controller sonar_controller((UART *)debug_uart, sonars, sonar_queues);
 
 // Define the pin names alphabetically:
 static const UByte bus_standby_pin = A5;

@@ -34,8 +34,8 @@ NULL_UART null_uart;
   UART *bus_uart = (UART *)&avr_uart0;
 #endif // defined(UDR1)
 
-Sonar_Queue b_sonar_queue(1, &PINB);
-Sonar_Queue d_sonar_queue(2, &PIND);
+Sonar_Queue b_sonar_queue(1, &PINB, debug_uart);
+Sonar_Queue d_sonar_queue(2, &PIND, debug_uart);
 
 // Create the sonar data structures:
 Sonar sonar0(&PINC, 1, &b_sonar_queue, 1, &PINB, 1);
@@ -91,11 +91,11 @@ Bus_Sonar10 bus_sonar10(address);
 // Do the two ISR's for the Sonar here:
 
 ISR(PCINT0_vect) {
-  Sonars_Controller::interrupt_handler(1);
+  //Sonars_Controller::interrupt_handler(1);
 }
 
 ISR(PCINT2_vect) {
-  Sonars_Controller::interrupt_handler(2);
+  //Sonars_Controller::interrupt_handler(2);
 }
 
 UByte command_process(Bus_Slave *bus_slave, 

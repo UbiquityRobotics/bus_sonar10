@@ -34,20 +34,20 @@ NULL_UART null_uart;
   UART *bus_uart = (UART *)&avr_uart0;
 #endif // defined(UDR1)
 
-Sonar_Queue b_sonar_queue(1, &PINB, debug_uart);
+Sonar_Queue b_sonar_queue(0, &PINB, debug_uart);
 Sonar_Queue d_sonar_queue(2, &PIND, debug_uart);
 
 // Create the sonar data structures:
-Sonar sonar0(&PINC, 1, &b_sonar_queue, 1, &PINB, 1);
-Sonar sonar1(&PINB, 5, &b_sonar_queue, 1, &PINB, 1);
-Sonar sonar2(&PINC, 0, &d_sonar_queue, 6, &PIND, 6);
-Sonar sonar3(&PINB, 4, &d_sonar_queue, 5, &PIND, 5);
-Sonar sonar4(&PINB, 0, &d_sonar_queue, 5, &PIND, 5);
-Sonar sonar5(&PINC, 3, &b_sonar_queue, 3, &PINB, 3);
-Sonar sonar6(&PINC, 2, &b_sonar_queue, 3, &PINB, 3);
-Sonar sonar7(&PIND, 7, &b_sonar_queue, 2, &PINB, 2);
-Sonar sonar8(&PIND, 4, &d_sonar_queue, 3, &PIND, 3);
-Sonar sonar9(&PIND, 2, &d_sonar_queue, 3, &PIND, 3);
+Sonar sonar0(&PINC, 1, &b_sonar_queue, 1, 1);
+Sonar sonar1(&PINB, 5, &b_sonar_queue, 1, 1);
+Sonar sonar2(&PINC, 0, &d_sonar_queue, 6, 6);
+Sonar sonar3(&PINB, 4, &d_sonar_queue, 5, 5);
+Sonar sonar4(&PINB, 0, &d_sonar_queue, 5, 5);
+Sonar sonar5(&PINC, 3, &b_sonar_queue, 3, 3);
+Sonar sonar6(&PINC, 2, &b_sonar_queue, 3, 3);
+Sonar sonar7(&PIND, 7, &b_sonar_queue, 2, 2);
+Sonar sonar8(&PIND, 4, &d_sonar_queue, 3, 3);
+Sonar sonar9(&PIND, 2, &d_sonar_queue, 3, 3);
 
 Sonar *sonars[] = {
   &sonar0,
@@ -70,12 +70,12 @@ Sonar_Queue *sonar_queues[] = {
 };
 
 UByte sonars_schedule[] = {
-  0, 5, 250,
-  1, 6, 250,
-  2, 7, 250,
-  3, 8, 250,
-  4, 9, 250,
-  255,
+  0, 5, Sonars_Controller::GROUP_END,
+  1, 6, Sonars_Controller::GROUP_END,
+  2, 7, Sonars_Controller::GROUP_END,
+  3, 8, Sonars_Controller::GROUP_END,
+  4, 9, Sonars_Controller::GROUP_END,
+  Sonars_Controller::SCHEDULE_END,
 };
 
 Sonars_Controller sonars_controller((UART *)debug_uart,
@@ -91,11 +91,11 @@ Bus_Sonar10 bus_sonar10(address);
 // Do the two ISR's for the Sonar here:
 
 ISR(PCINT0_vect) {
-  //Sonars_Controller::interrupt_handler(1);
+  b_sonar_queue.interrupt_service_routine();
 }
 
 ISR(PCINT2_vect) {
-  //Sonars_Controller::interrupt_handler(2);
+  d_sonar_queue.interrupt_service_routine();
 }
 
 UByte command_process(Bus_Slave *bus_slave, 
@@ -227,11 +227,6 @@ void setup() {
 
   // Set up the sonar controller software module:
   sonars_controller.initialize();
-
-  // Enable change interupts for PICINT1...8 and PCINT17...24:
-  //PCMSK0 = 0;
-  //PCMSK2 = 0;
-  //PCIR = _BV(2) | _BV(0);
 
   // Enable/disable interrupts based on *TEST*:
   switch (TEST) {

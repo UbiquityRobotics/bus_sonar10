@@ -40,14 +40,14 @@ Sonar_Queue d_sonar_queue(2, &PIND, debug_uart);
 // Create the sonar data structures:
 Sonar sonar0(&PINC, 1, &b_sonar_queue, 1, 1);
 Sonar sonar1(&PINB, 5, &b_sonar_queue, 1, 1);
-Sonar sonar2(&PINC, 0, &d_sonar_queue, 6, 6);
-Sonar sonar3(&PINB, 4, &d_sonar_queue, 5, 5);
-Sonar sonar4(&PINB, 0, &d_sonar_queue, 5, 5);
+Sonar sonar2(&PINC, 0, &d_sonar_queue, 22, 6);
+Sonar sonar3(&PINB, 4, &d_sonar_queue, 21, 5);
+Sonar sonar4(&PINB, 0, &d_sonar_queue, 21, 5);
 Sonar sonar5(&PINC, 3, &b_sonar_queue, 3, 3);
 Sonar sonar6(&PINC, 2, &b_sonar_queue, 3, 3);
 Sonar sonar7(&PIND, 7, &b_sonar_queue, 2, 2);
-Sonar sonar8(&PIND, 4, &d_sonar_queue, 3, 3);
-Sonar sonar9(&PIND, 2, &d_sonar_queue, 3, 3);
+Sonar sonar8(&PIND, 4, &d_sonar_queue, 19, 3);
+Sonar sonar9(&PIND, 2, &d_sonar_queue, 19, 3);
 
 Sonar *sonars[] = {
   &sonar0,

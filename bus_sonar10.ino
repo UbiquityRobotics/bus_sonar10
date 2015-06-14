@@ -20,7 +20,7 @@
 #include <Sonar.h>
 
 // This is the initial address of the module:
-static UByte address = 40;
+static UByte address = 41;
 
 // The null object can be used for *debug_uart*:
 NULL_UART null_uart;
@@ -38,16 +38,16 @@ Sonar_Queue b_sonar_queue(0, &PINB, debug_uart);
 Sonar_Queue d_sonar_queue(2, &PIND, debug_uart);
 
 // Create the sonar data structures:
-Sonar sonar0(&PINC, 1, &b_sonar_queue, 1, 1);
-Sonar sonar1(&PINB, 5, &b_sonar_queue, 1, 1);
-Sonar sonar2(&PINC, 0, &d_sonar_queue, 22, 6);
-Sonar sonar3(&PINB, 4, &d_sonar_queue, 21, 5);
-Sonar sonar4(&PINB, 0, &d_sonar_queue, 21, 5);
-Sonar sonar5(&PINC, 3, &b_sonar_queue, 3, 3);
-Sonar sonar6(&PINC, 2, &b_sonar_queue, 3, 3);
-Sonar sonar7(&PIND, 7, &b_sonar_queue, 2, 2);
-Sonar sonar8(&PIND, 4, &d_sonar_queue, 19, 3);
-Sonar sonar9(&PIND, 2, &d_sonar_queue, 19, 3);
+Sonar sonar0(&PINC, 1, &b_sonar_queue, 1, 1);	// [0]: fails
+Sonar sonar1(&PINB, 5, &b_sonar_queue, 1, 1);	// [1]: fails
+Sonar sonar2(&PINC, 0, &d_sonar_queue, 22, 6);	// [2]: fails
+Sonar sonar3(&PINB, 4, &d_sonar_queue, 21, 5);	// [3]: fails ?
+Sonar sonar4(&PINB, 0, &d_sonar_queue, 21, 5);	// [4]:
+Sonar sonar5(&PINC, 3, &b_sonar_queue, 3, 3);	// [5]: works
+Sonar sonar6(&PINC, 2, &b_sonar_queue, 3, 3);	// [6]: works
+Sonar sonar7(&PIND, 7, &b_sonar_queue, 2, 2);	// [7]: works
+Sonar sonar8(&PIND, 4, &d_sonar_queue, 19, 3);	// [8]:
+Sonar sonar9(&PIND, 2, &d_sonar_queue, 19, 3);	// [9]:
 
 Sonar *sonars[] = {
   &sonar0,
@@ -67,6 +67,11 @@ Sonar_Queue *sonar_queues[] = {
   &b_sonar_queue,
   &d_sonar_queue,
   (Sonar_Queue *)0,
+};
+
+UByte xsonars_schedule[] = {
+  4, Sonars_Controller::GROUP_END,
+  Sonars_Controller::SCHEDULE_END,
 };
 
 UByte sonars_schedule[] = {
@@ -112,6 +117,18 @@ void loop() {
       // Deal with any *bus* related activities:
       bus_slave.slave_mode(address, command_process);
       sonars_controller.poll();
+
+      //UShort changes_mask = sonars_controller.changes_mask_get();
+      //if ((changes_mask & 0xc0) != 0) {
+      //  for (UByte sonar_index = 0; sonar_index < 10; sonar_index++) {
+      //    debug_uart->integer_print(sonar_index);
+      //    debug_uart->string_print((Text)":");
+      //    UShort mm_distance = sonars_controller.mm_distance_get(sonar_index);
+      //    debug_uart->integer_print(mm_distance);
+      //    debug_uart->string_print((Text)" ");
+      //  }
+      //  debug_uart->string_print((Text)"\r\n");
+      //}
 
       break;
     }

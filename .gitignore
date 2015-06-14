@@ -1,6 +1,10 @@
 *~
 *bak
 *.bck
+sonar10_base.svg
+sonar10_base_holders.svg
+sonar10_holders.svg
+sonar10_layout.py
 OSHW_logo_KiCad_scalable
 build-bus_sonar10
 srv
